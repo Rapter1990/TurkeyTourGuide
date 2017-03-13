@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TurkeyTourGuide</string>
+
+    <string name="city_list">Tourist Cities of Turkey</string>
+
+    <string name="attractive_places_list">Attrative Places List</string>
+
+    <string name="attractive_place">Attractive Place</string>
+
+</resources>

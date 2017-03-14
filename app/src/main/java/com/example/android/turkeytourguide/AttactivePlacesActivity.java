@@ -22,49 +22,28 @@ public class AttactivePlacesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attactive_places);
 
-        ArrayList<City> cityAttactivePlaces = new ArrayList<City>();
-
-        // array boş geliyordu mainactivity deki arraylist static yaptım sorun çözüldü
-        cityAttactivePlaces = MainActivity.cityArraylist;
-
-
         Intent mIntent = getIntent();
         Bundle bundle = mIntent.getExtras();
 
         int position = bundle.getInt("position");
 
-
-
-        AttractivePlacesAdapter attractivePlacesAdapter = new AttractivePlacesAdapter(this,cityAttactivePlaces,R.color.mainBackground,position);
+        AttractivePlacesAdapter attractivePlacesAdapter = new AttractivePlacesAdapter(this,MainActivity.cityArraylist.get(position).getAttactivePlaces(), R.color.mainBackground);
 
         ListView listView = (ListView) findViewById(R.id.listviewAttactivePlaces);
-
         listView.setAdapter(attractivePlacesAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-                switch(position){
-
-                    case 0:
-                        //Toast.makeText(getApplicationContext(),"Galata Tower",Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(),position+"",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(AttactivePlacesActivity.this,AttactivePlaceObject.class);
-                        intent.putExtra("position",position);
-                        startActivity(intent);
-                        break;
-
-                    case 1:
-                        //Toast.makeText(getApplicationContext(),"Topkapı Palace",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(AttactivePlacesActivity.this,AttactivePlaceObject.class)
-                                .putExtra("position",position));
-                        break;
-
-                }
+                Toast.makeText(getApplicationContext(),position+"",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AttactivePlacesActivity.this,AttactivePlaceObject.class);
+                intent.putExtra("position",position);
+                startActivity(intent);
 
             }
         });
+
 
     }
 }

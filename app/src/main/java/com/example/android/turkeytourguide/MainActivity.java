@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     static ArrayList<City> cityArraylist = new ArrayList<City>();
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,18 +23,47 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.word_list);
 
 
+        cityArraylist = getObjects();
+
+
+        CityAdapter cityAdapter = new CityAdapter(this, cityArraylist, R.color.mainBackground);
+
+        GridView gridView = (GridView) findViewById(R.id.gridlist);
+        gridView.setAdapter(cityAdapter);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                        //Toast.makeText(getApplicationContext(),"İstanbul",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), position + "", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, AttactivePlacesActivity.class);
+                        intent.putExtra("position", position);
+                        startActivity(intent);
+
+            }
+        });
+
+
+    }
+
+
+    public ArrayList<City> getObjects(){
+
+        ArrayList<City> cities = new ArrayList<City>();
+
         City istanbul = new City();
 
         istanbul.setCityName("İstanbul");
         istanbul.setmCityImageResourceId(R.drawable.istanbul);
 
-        AttactivePlaces istanbulAttactivePlaces_one =new AttactivePlaces();
+        AttactivePlaces istanbulAttactivePlaces_one = new AttactivePlaces();
         istanbulAttactivePlaces_one.setPlaceName("Galata Tower");
         istanbulAttactivePlaces_one.setmAttaticePlaceImageResourceId(R.drawable.galata);
-        istanbulAttactivePlaces_one.setPlaceDetailInformation("Galata Tower is one of the wonderful tourist places in Beyoğlu,İstanbul");
+        istanbulAttactivePlaces_one.setPlaceDetailInformation(getResources().getString(R.string.galata_tower));
         istanbul.getAttactivePlaces().add(istanbulAttactivePlaces_one);
 
-        AttactivePlaces istanbulAttactivePlaces_two =new AttactivePlaces();
+        AttactivePlaces istanbulAttactivePlaces_two = new AttactivePlaces();
         istanbulAttactivePlaces_two.setPlaceName("Topkapı Palace");
         istanbulAttactivePlaces_two.setmAttaticePlaceImageResourceId(R.drawable.topkapi);
         istanbulAttactivePlaces_two.setPlaceDetailInformation("Topkapı Palace is one of the wonderful tourist places in Fatih,İstanbul");
@@ -51,70 +80,14 @@ public class MainActivity extends AppCompatActivity {
         antalyaAttactivePlaces_one.setPlaceDetailInformation("Antalya");
         antalya.getAttactivePlaces().add(antalyaAttactivePlaces_one);
 
-        cityArraylist.add(istanbul);
-        cityArraylist.add(antalya);
-
-        /*cityArraylist.add(new City(R.drawable.istanbul,"İstanbul"));
-        cityArraylist.add(new City(R.drawable.antalya,"Antalya"));
-        cityArraylist.add(new City(R.drawable.antalya,"c"));
-        cityArraylist.add(new City(R.drawable.antalya,"d"));
-        cityArraylist.add(new City(R.drawable.antalya,"a"));
-        cityArraylist.add(new City(R.drawable.antalya,"b"));
-        cityArraylist.add(new City(R.drawable.antalya,"c"));
-        cityArraylist.add(new City(R.drawable.antalya,"d"));
-        cityArraylist.add(new City(R.drawable.antalya,"a"));
-        cityArraylist.add(new City(R.drawable.antalya,"b"));
-        cityArraylist.add(new City(R.drawable.antalya,"c"));
-        cityArraylist.add(new City(R.drawable.antalya,"d"));*/
+        cities.add(istanbul);
+        cities.add(antalya);
 
 
 
-
-        CityAdapter cityAdapter = new CityAdapter(this,cityArraylist,R.color.mainBackground);
-
-        GridView gridView = (GridView) findViewById(R.id.gridlist);
-        gridView.setAdapter(cityAdapter);
-
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                   switch (position){
-
-                   case 0:
-                        //Toast.makeText(getApplicationContext(),"İstanbul",Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(),position+"",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this,AttactivePlacesActivity.class);
-                        intent.putExtra("position",position);
-                        startActivity(intent);
-                        break;
-
-                    case 1:
-                        //Toast.makeText(getApplicationContext(),"Antalya",Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(),position+"",Toast.LENGTH_SHORT).show();
-                        Intent intent1 = new Intent(MainActivity.this,AttactivePlacesActivity.class);
-                        intent1.putExtra("position",position);
-                        startActivity(intent1);
-                        break;
-
-                    case 2:
-                        Toast.makeText(getApplicationContext(),"İzmir",Toast.LENGTH_SHORT).show();
-                        break;
-
-                    case 3:
-                        Toast.makeText(getApplicationContext(),"Çanakkale",Toast.LENGTH_SHORT).show();
-                        break;
-
-                }
-
-            }
-        });
-
-
-
-
+        return cities;
 
     }
-
 
 
 }

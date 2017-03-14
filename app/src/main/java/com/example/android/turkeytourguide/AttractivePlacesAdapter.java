@@ -8,20 +8,18 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 /**
  * Created by user on 8.03.2017.
  */
 
-public class AttractivePlacesAdapter extends ArrayAdapter<City> {
+public class AttractivePlacesAdapter extends ArrayAdapter<AttactivePlaces> {
 
     private int mBackgroundColor; // BackGround Color For each Activity
 
-    private int gridviewPosition;
 
-    public AttractivePlacesAdapter(Context context, ArrayList<City> resources, int color,int position) {
+    public AttractivePlacesAdapter(Context context, ArrayList<AttactivePlaces> resources, int color) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
         // the second argument is used when the ArrayAdapter is populating a single TextView.
         // Because this is a custom adapter for two TextViews , the adapter is not
@@ -29,7 +27,6 @@ public class AttractivePlacesAdapter extends ArrayAdapter<City> {
         // 0 -> list item layout resource ID
         super(context,0 ,resources);
         mBackgroundColor = color;
-        gridviewPosition = position;
     }
 
 
@@ -57,20 +54,22 @@ public class AttractivePlacesAdapter extends ArrayAdapter<City> {
         // get position of item to city
         //City city = getItem(gridviewPosition);
 
-        City city = MainActivity.cityArraylist.get(gridviewPosition);
+        //City city = MainActivity.cityArraylist.get(gridviewPosition);
+
+        AttactivePlaces place = getItem(position);
 
             // City Information
             TextView name = (TextView) listview.findViewById(R.id.bilgi_text_view);
-            name.setText(city.getAttactivePlaces().get(position).getPlaceName());
+            name.setText(place.getPlaceName());
 
 
             // Picture of City
             ImageView image = (ImageView) listview.findViewById(R.id.image_image_view);
 
             // Check whether the picture is or not.
-            if (city.hasImage()) {
+            if (place.hasImage()) {
                 //
-                image.setImageResource(city.getAttactivePlaces().get(position).getmAttaticePlaceImageResourceId());
+                image.setImageResource(place.getmAttaticePlaceImageResourceId());
             } else {
                 image.setVisibility(View.GONE);
             }

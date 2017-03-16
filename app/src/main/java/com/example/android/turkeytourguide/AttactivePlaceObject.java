@@ -32,24 +32,34 @@ public class AttactivePlaceObject extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.listviewAttactivePlaces);
 
 
-        //gridView.getItemIdAtPosition();
+        Intent mIntent = getIntent();
+        Bundle bundle = mIntent.getExtras();
 
-        //listView.getItemIdAtPosition();
+        int position = bundle.getInt("position");
+
+        ArrayList <AttactivePlaces> attactivePlacesArraylist = new ArrayList<>();
+        AttactivePlaces object = AttactivePlacesActivity.objects.get(position);
+
+
 
 
         ImageView attractivePlaceImage = (ImageView) findViewById(R.id.attractive_place_image);
 
         TextView attractivePlaceInformation = (TextView) findViewById(R.id.attractive_place_detailed_information);
 
-
         ImageView location = (ImageView) findViewById(R.id.location_icon);
 
 
         attractivePlaceImage.setImageResource(
-                cityAttactivePlaces.get(0).getAttactivePlaces().get(0).getmAttaticePlaceImageResourceId());
+                //cityAttactivePlaces.get(0).getAttactivePlaces().get(0).getmAttaticePlaceImageResourceId()
+                object.getmAttaticePlaceImageResourceId()
+        );
 
 
-        attractivePlaceInformation.setText(cityAttactivePlaces.get(0).getAttactivePlaces().get(0).getPlaceDetailInformation());
+        attractivePlaceInformation.setText(
+                //cityAttactivePlaces.get(0).getAttactivePlaces().get(0).getPlaceDetailInformation())
+                object.getPlaceDetailInformation()
+        );
 
         location.setOnClickListener(new View.OnClickListener() {
             @Override

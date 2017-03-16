@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class AttactivePlacesActivity extends AppCompatActivity {
 
-    //ArrayList<String> items= null;
+    static ArrayList<AttactivePlaces> objects = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,8 @@ public class AttactivePlacesActivity extends AppCompatActivity {
         Bundle bundle = mIntent.getExtras();
 
         int position = bundle.getInt("position");
+
+        objects = MainActivity.cityArraylist.get(position).getAttactivePlaces();
 
         AttractivePlacesAdapter attractivePlacesAdapter = new AttractivePlacesAdapter(this,MainActivity.cityArraylist.get(position).getAttactivePlaces(), R.color.mainBackground);
 

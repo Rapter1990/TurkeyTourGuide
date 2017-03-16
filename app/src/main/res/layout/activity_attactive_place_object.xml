@@ -15,11 +15,11 @@
         android:src="@drawable/antalya"
         android:scaleType="center" />
 
-
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/attractive_place_image">
+
 
     <TextView
         android:id="@+id/attractive_place_detailed_information"
@@ -27,9 +27,15 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-
         android:text="\taaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
 
+    </ScrollView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/attractive_place_image">
 
         <ImageView
             android:id="@+id/location_icon"
@@ -38,9 +44,7 @@
             android:src="@drawable/location"
 
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="25dp" />
-
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 

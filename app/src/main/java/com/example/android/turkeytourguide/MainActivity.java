@@ -36,10 +36,16 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
                         //Toast.makeText(getApplicationContext(),"İstanbul",Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getApplicationContext(), position + "", Toast.LENGTH_SHORT).show();
+                       /** Toast.makeText(getApplicationContext(), position + "", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(MainActivity.this, AttactivePlacesActivity.class);
                         intent.putExtra("position", position);
+                        startActivity(intent);**/
+
+                        Toast.makeText(getApplicationContext(), position + "", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this,CityCategoryScreen.class);
+                        intent.putExtra("position",position);
                         startActivity(intent);
+
 
             }
         });
@@ -79,6 +85,12 @@ public class MainActivity extends AppCompatActivity {
         antalyaAttactivePlaces_one.setmAttaticePlaceImageResourceId(R.drawable.galata);
         antalyaAttactivePlaces_one.setPlaceDetailInformation("Antalya");
         antalya.getAttactivePlaces().add(antalyaAttactivePlaces_one);
+
+
+
+
+
+
 
         cities.add(istanbul);
         cities.add(antalya);

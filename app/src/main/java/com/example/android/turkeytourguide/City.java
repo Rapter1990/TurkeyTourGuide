@@ -1,12 +1,13 @@
 package com.example.android.turkeytourguide;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by user on 7.03.2017.
  */
 
-public class City {
+public class City implements Serializable{
 
     private static final int NO_IMAGE_PROVIDED= -1; // out of range all possible valid resource ID
 

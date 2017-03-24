@@ -11,6 +11,7 @@ import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class AttactivePlacesActivity extends AppCompatActivity {
@@ -27,9 +28,13 @@ public class AttactivePlacesActivity extends AppCompatActivity {
 
         int position = bundle.getInt("position");
 
-        objects = MainActivity.cityArraylist.get(position).getAttactivePlaces();
+        City object = (City) getIntent().getSerializableExtra("CityForCategory");
+        objects = object.getAttactivePlaces();
 
-        AttractivePlacesAdapter attractivePlacesAdapter = new AttractivePlacesAdapter(this,MainActivity.cityArraylist.get(position).getAttactivePlaces(), R.color.mainBackground);
+        //objects = MainActivity.cityArraylist.get(position).getAttactivePlaces();
+
+        //AttractivePlacesAdapter attractivePlacesAdapter = new AttractivePlacesAdapter(this,MainActivity.cityArraylist.get(position).getAttactivePlaces(), R.color.mainBackground);
+        AttractivePlacesAdapter attractivePlacesAdapter = new AttractivePlacesAdapter(this,objects, R.color.mainBackground);
 
         ListView listView = (ListView) findViewById(R.id.listviewAttactivePlaces);
         listView.setAdapter(attractivePlacesAdapter);

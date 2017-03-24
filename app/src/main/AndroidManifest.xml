@@ -17,14 +17,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:label="@string/city_list"
-            android:name=".MainActivity" />
+            android:name=".MainActivity"
+            android:label="@string/city_list" />
         <activity
-            android:label="@string/attractive_places_list"
-            android:name=".AttactivePlacesActivity" />
+            android:name=".AttactivePlacesActivity"
+            android:label="@string/attractive_places_list" />
         <activity
-            android:label="@string/attractive_place"
-            android:name=".AttactivePlaceObject">
+            android:name=".AttactivePlaceObject"
+            android:label="@string/attractive_place"></activity>
+        <activity android:name=".CityCategoryScreen"
+            android:label="@string/city_category">
         </activity>
     </application>
 

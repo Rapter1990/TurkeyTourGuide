@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -19,17 +20,6 @@ public class AttactivePlaceObject extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attactive_place_object);
 
-
-        ArrayList<City> cityAttactivePlaces = new ArrayList<City>();
-
-        // array boş geliyordu mainactivity deki arraylist static yaptım sorun çözüldü
-        cityAttactivePlaces = MainActivity.cityArraylist;
-
-        // get from a previous gridview to get each item of gridview
-        GridView gridView = (GridView) findViewById(R.id.gridlist);
-
-        // get from a previous listview to get each item of listview
-        ListView listView = (ListView) findViewById(R.id.listviewAttactivePlaces);
 
 
         Intent mIntent = getIntent();
@@ -60,6 +50,9 @@ public class AttactivePlaceObject extends AppCompatActivity {
                 //cityAttactivePlaces.get(0).getAttactivePlaces().get(0).getPlaceDetailInformation())
                 object.getPlaceDetailInformation()
         );
+
+        // Enabling scrollable in the attractivePlaceInformation textview
+        attractivePlaceInformation.setMovementMethod(new ScrollingMovementMethod());
 
         location.setOnClickListener(new View.OnClickListener() {
             @Override
